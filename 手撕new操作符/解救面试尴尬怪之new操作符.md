@@ -1,3 +1,5 @@
+![面试图片](./interview.jpg)
+
 你是否有过这样的经历：
 面试官：你知道js中new操作符具体做了哪些事情么？
 我：...
@@ -16,9 +18,15 @@
 
 对应以上步骤，具体代码实现如下所示：
 ```js
-
+function newOperation(constructor) {
+    const o = new Object();
+    o.__proto__ = constructor.prototype;
+    const args = Array.from(arguments);
+    const returnValue = constructor.apply(o, args.slice(1));
+    return typeof returnValue !== 'object' ? o: returnValue;
+}
 ```
 
-### ECMAScript中new操作符的定义
+### ECMAScript规范中new操作符的定义
 
 

@@ -10,7 +10,7 @@
 
 <body>
     <script type="module">
-        import myNew from './newOperation';
+        import myNew from './newOperation.js';
         function Person(name, age, job) {
             this.name = name;
             this.age = age;
@@ -21,6 +21,9 @@
             }
         }
 
+        const nativeJack = new Person('Jacky', 4, '打洞专业户');
+        console.log('nativeJack :>> ', nativeJack);
+        nativeJack.sayHello();
         const jack = myNew(Person, 'Jacky', 4, '打洞专业户');
         console.log('jack :>> ', jack);
         jack.sayHello();
