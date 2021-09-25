@@ -1,4 +1,4 @@
-![面试图片](./interview.jpg)
+![面试图片](https://i.loli.net/2021/09/23/Lwrn2GVDiHP39lW.jpg)
 
 你是否有过这样的经历：
 面试官：你知道js中new操作符具体做了哪些事情么？
@@ -19,14 +19,36 @@
 对应以上步骤，具体代码实现如下所示：
 ```js
 function newOperation(constructor) {
-    const o = new Object();
-    o.__proto__ = constructor.prototype;
-    const args = Array.from(arguments);
-    const returnValue = constructor.apply(o, args.slice(1));
-    return typeof returnValue !== 'object' ? o: returnValue;
+     if (typeof constructor !== 'function') {
+         throw new Error('constructor must be a function.')
+     }
+ 
+     const o = {};
+     o.__proto__ = constructor.prototype;
+     // const args = Array.from(arguments);
+     const returnValue = constructor.apply(o, args);
+     const isObject = typeof returnValue === 'object' && returnValue;
+     const isFunction = typeof returnValue === 'function';
+     return (isObject ||isFunction) ? returnValue : o;
 }
 ```
 
 ### ECMAScript规范中new操作符的定义
+
+> **12.3.3.1.1Runtime Semantics: EvaluateNew(constructProduction, arguments)**
+> The abstract operation EvaluateNew with arguments constructProduction, and arguments performs the following steps:
+> 
+> 1. Assert: constructProduction is either a NewExpression or a MemberExpression.
+> 2. Assert: arguments is either empty or an Arguments production.
+> 3. Let ref be the result of evaluating constructProduction.
+> 4. Let constructor be GetValue(ref).
+> 5. ReturnIfAbrupt(constructor).
+> 6. If arguments is empty, let argList be an empty List.
+> 7. Else,
+>     a. Let argList be ArgumentListEvaluation of arguments.
+>     b. ReturnIfAbrupt(argList).
+> 10. If IsConstructor (constructor) is false, throw a TypeError exception.
+> 11. Return Construct(constructor, argList).
+
 
 

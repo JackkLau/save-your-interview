@@ -3,7 +3,7 @@ function newOperation(constructor, ...args) {
         throw new Error('constructor must be a function.')
     }
 
-    const o = new Object();
+    const o = {};
     o.__proto__ = constructor.prototype;
     // const args = Array.from(arguments);
     const returnValue = constructor.apply(o, args);

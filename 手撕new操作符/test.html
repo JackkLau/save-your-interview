@@ -19,14 +19,21 @@
             this.sayHello = function () {
                 console.log(`${this.name}向你跟你说了一声好。`);
             }
+
+            // return { age: 22 }
         }
+
+        Person.prototype.color = ['red', 'yellow'];
 
         const nativeJack = new Person('Jacky', 4, '打洞专业户');
         console.log('nativeJack :>> ', nativeJack);
-        nativeJack.sayHello();
+        // nativeJack.sayHello();
         const jack = myNew(Person, 'Jacky', 4, '打洞专业户');
         console.log('jack :>> ', jack);
-        jack.sayHello();
+        // jack.sayHello();
+
+        const reflectJack = Reflect.construct(Person, {0: 'Jacky', 1: 4, 2:'打洞专业户', length: 3});
+        console.log('reflectJack: >>', reflectJack)
     </script>
 </body>
 
