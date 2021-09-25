@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>深拷贝</title>
+</head>
+<body>
+<script type="module">
+  import deepCloneByJSON from "./deepCloneByJSON.js";
+  import deepCloneByRecursive from "./deepCloneByRecursive.js";
+  import deepCloneByIterable from "./deepCloneByIterable.js";
+  import deepCloneByMemo from "./deepCloneByMemo.js";
+
+  const obj = {
+    a: {
+      b: [1,2,3]
+    },
+    c: function () {
+      console.log('123')
+    },
+    d: new Date(1,2,3,4),
+    e: null,
+    f: undefined,
+    g: {}
+  };
+  const b = {obj};
+  obj.g = b;
+  // window.obj = obj;
+  // const resultByJson = deepCloneByJSON(obj);
+  // const resultByRecursive = deepCloneByRecursive(obj);
+  const resultByIterable = deepCloneByMemo(obj);
+  // console.log('resultByJson: >>', resultByJson);
+  // console.log('resultByRecursive: >>', resultByRecursive);
+  console.log('resultByIterable: >>', resultByIterable);
+</script>
+</body>
+</html>
