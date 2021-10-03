@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>辗转相除法将十进制转换为二进制</title>
+</head>
+<body>
+<div id="app"></div>
+<script src="https://cdn.staticfile.org/react/16.4.0/umd/react.development.js"></script>
+<script src="https://cdn.staticfile.org/react-dom/16.4.0/umd/react-dom.development.js"></script>
+<!-- 生产环境中不建议使用 -->
+<script src="https://cdn.staticfile.org/babel-standalone/6.26.0/babel.min.js"></script>
+<script src="stackByArray.js"></script>
+<script type="text/babel">
+
+
+  function decimalToBinary(decimal) {
+    const stack = new StackByArray();
+    let originNum = decimal;
+    let rem;
+    let binaryStr = '';
+
+    while (originNum > 0) {
+      rem = Math.floor(originNum % 2);
+      stack.push(rem);
+      originNum = Math.floor(originNum / 2);
+    }
+
+    while (!stack.isEmpty()) {
+      binaryStr += stack.pop().toString();
+    }
+
+    return binaryStr;
+  }
+
+  function baseConverter(decimal, base = 2) {
+    const stack = new StackByArray();
+    const digits = '0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+
+    let originNum = decimal;
+    let rem;
+    let binaryStr = '';
+
+    if (!(base >= 2 && base <= 36)) {
+      return '';
+    }
+
+    while (originNum > 0) {
+      rem = Math.floor(originNum % base);
+      stack.push(rem);
+      originNum = Math.floor(originNum / base);
+    }
+
+    while (!stack.isEmpty()) {
+      binaryStr += digits[stack.pop()].toString();
+    }
+
+    return binaryStr;
+  }
+
+  function showResult() {
+    return (
+      <div>
+        <input id="input" value="" />
+        <p>{baseConverter(12, 16)}</p>
+      </div>
+    );
+  }
+
+  ReactDOM.render(
+    showResult(),
+    document.querySelector('#app')
+  )
+</script>
+</body>
+</html>

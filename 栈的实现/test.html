@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>栈的测试</title>
+</head>
+<body>
+<script src="stackByArray.js"></script>
+
+<script type="module">
+  import StackByObject from './stackByObject.js';
+
+  const stackObject = new StackByArray();
+  stackObject.push(2);
+  stackObject.push(5);
+  stackObject.push(7);
+  stackObject.push(8);
+  stackObject.push(1);
+  stackObject.push(1);
+
+  const popValue = stackObject.pop();
+  console.log('popValue: >>', popValue)
+  console.log('stackObject: >>', stackObject.peek())
+  console.log('stackObject.getMin: >>', stackObject.getMin())
+</script>
+</body>
+</html>
