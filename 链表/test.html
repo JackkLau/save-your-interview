@@ -10,15 +10,16 @@
   import {LinkedList} from "./LinkedList.js";
   import {DoublyLinkedList} from "./DoublyLinkedList.js";
   import {CircularLinkedList} from "./CircularLinkedList.js";
+  import {SortedLinkedList} from "./SortedLinkedList.js";
 
-  const ll = new CircularLinkedList();
+  const ll = new SortedLinkedList();
   ll.push(1);
   ll.push(2);
   ll.push(4);
   ll.push(5);
   ll.insert(3, 2);
   ll.insert(10, 0);
-  ll.removeAt(0);
+  // ll.removeAt(0);
   console.log('ll: >>', ll)
   console.log('ll.size(): >>', ll.size())
   console.log('ll.toString: >>', ll.toString());
