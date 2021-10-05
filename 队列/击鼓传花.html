@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>击鼓传花</title>
+</head>
+<body>
+<script src="Queue.js"></script>
+<script>
+  function hotPotato(elementList, num) {
+    const queue = new Queue();
+    const eliminatedList = [];
+
+    for (let i = 0; i < elementList.length; i++) {
+      queue.enqueue(elementList[i]);
+    }
+
+    while (queue.size() > 1) {
+      for (let i = 0; i < num; i++) {
+        queue.enqueue(queue.dequeue());
+      }
+      eliminatedList.push(queue.dequeue());
+    }
+
+    return {
+      eliminated: eliminatedList,
+      winner: queue.dequeue()
+    }
+  }
+
+  const names = ['张三','李四','王五','赵六', '田七'];
+  const result = hotPotato(names, 3);
+  console.log('result: >>', result);
+</script>
+</body>
+</html>

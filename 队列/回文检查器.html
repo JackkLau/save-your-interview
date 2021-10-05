@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>回文检查器</title>
+</head>
+<body>
+<script src="DoubleEndQueue.js"></script>
+<script>
+  function palindromeChecker(string) {
+    if (!string || (string && !string.length)) {
+      return false;
+    }
+
+    const deque = new DoubleEndQueue();
+    // 将所有大写字母转换为小写字母，同时移除字符串中间的空格
+    // 利用split还可以移除其他特殊字符，例如！、? 、-、(和)等。
+    const lowerString = string.toLocaleString().split(' ').join('');
+    let isEqual = true;
+    let firstChar, lastChar;
+
+    for (let i = 0; i < lowerString.length; i++) {
+      deque.addBack(lowerString.charAt(i));
+    }
+
+    while (deque.size() > 1 && isEqual) {
+      firstChar = deque.deFront(); // 取出队列前面的字母
+      lastChar = deque.deBack();   // 取出队列后面的字母
+      if (firstChar !== lastChar) {  // 如果首尾字母不相同，则表示不是回文字符串
+        isEqual = false;
+      }
+    }
+
+    return  isEqual;
+  }
+
+  const test = 'abcba';
+  const result = palindromeChecker(test);
+  console.log('result: >>', result);
+</script>
+</body>
+</html>
