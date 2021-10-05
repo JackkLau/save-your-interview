@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>链表测试</title>
+</head>
+<body>
+
+<script type="module">
+  import {LinkedList} from "./LinkedList.js";
+  import {DoublyLinkedList} from "./DoublyLinkedList.js";
+  import {CircularLinkedList} from "./CircularLinkedList.js";
+
+  const ll = new CircularLinkedList();
+  ll.push(1);
+  ll.push(2);
+  ll.push(4);
+  ll.push(5);
+  ll.insert(3, 2);
+  ll.insert(10, 0);
+  ll.removeAt(0);
+  console.log('ll: >>', ll)
+  console.log('ll.size(): >>', ll.size())
+  console.log('ll.toString: >>', ll.toString());
+</script>
+</body>
+</html>
