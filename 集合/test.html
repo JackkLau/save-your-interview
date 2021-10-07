@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>集合测试</title>
+</head>
+<body>
+
+<script type="module">
+  import {MSet} from "./MSet.js";
+
+  const set = new MSet();
+  set.add(1);
+  set.add(3);
+  set.add(2);
+  set.delete(2);
+  const set1 = new MSet();
+  set1.add(1);
+  set1.add(3);
+  set1.add(2);
+  console.log('set.isSubsetOf(set1): >>', set.isSubsetOf(set1));
+  console.log('set: >>', set);
+</script>
+</body>
+</html>
