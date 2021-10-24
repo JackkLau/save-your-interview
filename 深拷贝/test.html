@@ -23,12 +23,12 @@
     f: undefined,
     g: {}
   };
-  const b = {obj};
-  obj.g = b;
+  // const b = {obj};
+  // obj.g = b;
   // window.obj = obj;
   // const resultByJson = deepCloneByJSON(obj);
   // const resultByRecursive = deepCloneByRecursive(obj);
-  const resultByIterable = deepCloneByMemo(obj);
+  const resultByIterable = deepCloneByIterable(obj);
   // console.log('resultByJson: >>', resultByJson);
   // console.log('resultByRecursive: >>', resultByRecursive);
   console.log('resultByIterable: >>', resultByIterable);

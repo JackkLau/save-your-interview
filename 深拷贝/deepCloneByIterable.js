@@ -20,7 +20,7 @@ export default function deepClone(source) {
     data: source
   }];
 
-  while (stack.length) {
+  while (stack.length > 0) {
     const node = stack.pop();
     const parent = node.parent;
     const key = node.key;
