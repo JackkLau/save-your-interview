@@ -1,4 +1,4 @@
-import {defaultEquals, Node} from "./utils.js";
+import {defaultEquals, Node} from "../common/utils.js";
 
 
 export class LinkedList {

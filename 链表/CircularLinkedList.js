@@ -1,5 +1,5 @@
 import {LinkedList} from "./LinkedList.js";
-import {defaultEquals, Node} from "./utils.js";
+import {defaultEquals, Node} from "../common/utils.js";
 /**
  * 单向循环链表
  */

@@ -1,5 +1,5 @@
 import {LinkedList} from "./LinkedList.js";
-import {defaultEquals, DoublyNode} from "./utils.js";
+import {defaultEquals, DoublyNode} from "../common/utils.js";
 
 export class DoublyLinkedList extends LinkedList{
   constructor(equalFn = defaultEquals) {
